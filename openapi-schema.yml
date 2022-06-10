@@ -1,0 +1,2252 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /accounts/user/all_user/:
+    get:
+      operationId: retrieveUser
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - accounts
+  /accounts/user/profile/:
+    get:
+      operationId: listUsers
+      description: Allows the logged in user to view their profile, edit or deactivate
+        account. Do not use this view for changing password or resetting password
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetUser'
+          description: ''
+      tags:
+      - accounts
+  /bank/account/all_account/:
+    get:
+      operationId: listAccounts
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+          description: ''
+      tags:
+      - bank
+    post:
+      operationId: createAccount
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Account'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+      tags:
+      - bank
+  /bank/account/{user}/:
+    get:
+      operationId: retrieveAccount
+      description: ''
+      parameters:
+      - name: user
+        in: path
+        required: true
+        description: A unique value identifying this User's Account.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+      tags:
+      - bank
+    put:
+      operationId: updateAccount
+      description: ''
+      parameters:
+      - name: user
+        in: path
+        required: true
+        description: A unique value identifying this User's Account.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Account'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+      tags:
+      - bank
+    patch:
+      operationId: partialUpdateAccount
+      description: ''
+      parameters:
+      - name: user
+        in: path
+        required: true
+        description: A unique value identifying this User's Account.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Account'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+      tags:
+      - bank
+    delete:
+      operationId: destroyAccount
+      description: ''
+      parameters:
+      - name: user
+        in: path
+        required: true
+        description: A unique value identifying this User's Account.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - bank
+  /bank/transfer/all_transfer/:
+    get:
+      operationId: listTransfers
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transfer'
+          description: ''
+      tags:
+      - bank
+    post:
+      operationId: createTransfer
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+          description: ''
+      tags:
+      - bank
+  /bank/transfer/{id}/:
+    get:
+      operationId: retrieveTransfer
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Transfer.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+          description: ''
+      tags:
+      - bank
+    put:
+      operationId: updateTransfer
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Transfer.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+          description: ''
+      tags:
+      - bank
+    patch:
+      operationId: partialUpdateTransfer
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Transfer.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+          description: ''
+      tags:
+      - bank
+    delete:
+      operationId: destroyTransfer
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Transfer.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - bank
+  /bank/withdraw/all_withdraw/:
+    get:
+      operationId: listWithdraws
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Withdraw'
+          description: ''
+      tags:
+      - bank
+    post:
+      operationId: createWithdraw
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Withdraw'
+          description: ''
+      tags:
+      - bank
+  /bank/withdraw/{id}/:
+    get:
+      operationId: retrieveWithdraw
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Withdraw.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Withdraw'
+          description: ''
+      tags:
+      - bank
+    put:
+      operationId: updateWithdraw
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Withdraw.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Withdraw'
+          description: ''
+      tags:
+      - bank
+    patch:
+      operationId: partialUpdateWithdraw
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Withdraw.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Withdraw'
+          description: ''
+      tags:
+      - bank
+    delete:
+      operationId: destroyWithdraw
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Withdraw.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - bank
+  /bank/deposit/all_deposit/:
+    get:
+      operationId: listDeposits
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Deposit'
+          description: ''
+      tags:
+      - bank
+    post:
+      operationId: createDeposit
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Deposit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Deposit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Deposit'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deposit'
+          description: ''
+      tags:
+      - bank
+  /bank/deposit/{id}/:
+    get:
+      operationId: retrieveDeposit
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Deposit.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deposit'
+          description: ''
+      tags:
+      - bank
+    put:
+      operationId: updateDeposit
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Deposit.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Deposit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Deposit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Deposit'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deposit'
+          description: ''
+      tags:
+      - bank
+    patch:
+      operationId: partialUpdateDeposit
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Deposit.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Deposit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Deposit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Deposit'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deposit'
+          description: ''
+      tags:
+      - bank
+    delete:
+      operationId: destroyDeposit
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Deposit.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - bank
+  /bank/balance/check_balance/:
+    get:
+      operationId: listcheck_balances
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Check_balance'
+          description: ''
+      tags:
+      - bank
+    post:
+      operationId: createcheck_balance
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Check_balance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Check_balance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Check_balance'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check_balance'
+          description: ''
+      tags:
+      - bank
+  /bank/balance/{id}/:
+    get:
+      operationId: retrievecheck_balance
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Check Balance.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check_balance'
+          description: ''
+      tags:
+      - bank
+    put:
+      operationId: updatecheck_balance
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Check Balance.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Check_balance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Check_balance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Check_balance'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check_balance'
+          description: ''
+      tags:
+      - bank
+    patch:
+      operationId: partialUpdatecheck_balance
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Check Balance.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Check_balance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Check_balance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Check_balance'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check_balance'
+          description: ''
+      tags:
+      - bank
+    delete:
+      operationId: destroycheck_balance
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Check Balance.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - bank
+  /authentication/logout/:
+    get:
+      operationId: listLogouts
+      description: 'Calls Django logout method and delete the Token object
+
+        assigned to the current User object.
+
+
+        Accepts/Returns nothing.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - authentication
+    post:
+      operationId: createLogout
+      description: 'Calls Django logout method and delete the Token object
+
+        assigned to the current User object.
+
+
+        Accepts/Returns nothing.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - authentication
+  /authentication/user/:
+    get:
+      operationId: retrieveUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+      tags:
+      - authentication
+    put:
+      operationId: updateUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+      tags:
+      - authentication
+    patch:
+      operationId: partialUpdateUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+      tags:
+      - authentication
+  /accounts/user/add_user/:
+    post:
+      operationId: createUser
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - accounts
+  /accounts/user/add_admin/:
+    post:
+      operationId: createAdmin
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Admin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Admin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Admin'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Admin'
+          description: ''
+      tags:
+      - accounts
+  /accounts/auth/token/refresh/:
+    post:
+      operationId: createTokenRefresh
+      description: 'Takes a refresh type JSON web token and returns an access type
+        JSON web
+
+        token if the refresh token is valid.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+      tags:
+      - accounts
+  /accounts/user/forgot_password/:
+    post:
+      operationId: createResetPasswordOTP
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordOTP'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordOTP'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordOTP'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResetPasswordOTP'
+          description: ''
+      tags:
+      - accounts
+  /accounts/user/forgot_password/confirm_password/:
+    post:
+      operationId: createConfirmResetOtp
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmResetOtp'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ConfirmResetOtp'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ConfirmResetOtp'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfirmResetOtp'
+          description: ''
+      tags:
+      - accounts
+  /accounts/otp/:
+    post:
+      operationId: createOTPVerify
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPVerify'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OTPVerify'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OTPVerify'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OTPVerify'
+          description: ''
+      tags:
+      - accounts
+  /accounts/otp/new/:
+    post:
+      operationId: createNewOtp
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewOtp'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewOtp'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NewOtp'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewOtp'
+          description: ''
+      tags:
+      - accounts
+  /bank/account/add_account/:
+    post:
+      operationId: createAddAccount
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - bank
+  /bank/transfer/make_transfer/:
+    post:
+      operationId: createAddTransfer
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - bank
+  /bank/withdraw/make_withdraw/:
+    post:
+      operationId: createAddWithdraw
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - bank
+  /bank/deposit/make_deposit/:
+    post:
+      operationId: createAddDeposit
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - bank
+  /authentication/password/reset/:
+    post:
+      operationId: createPasswordReset
+      description: 'Calls Django Auth PasswordResetForm save method.
+
+
+        Accepts the following POST parameters: email
+
+        Returns the success/fail message.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordReset'
+          description: ''
+      tags:
+      - authentication
+  /authentication/password/reset/confirm/:
+    post:
+      operationId: createPasswordResetConfirm
+      description: "Password reset e-mail link is confirmed, therefore\nthis resets\
+        \ the user's password.\n\nAccepts the following POST parameters: token, uid,\n\
+        \    new_password1, new_password2\nReturns the success/fail message."
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordResetConfirm'
+          description: ''
+      tags:
+      - authentication
+  /authentication/login/:
+    post:
+      operationId: createLogin
+      description: 'Check the credentials and return the REST Token
+
+        if the credentials are valid and authenticated.
+
+        Calls Django Auth login method to register User ID
+
+        in Django session framework
+
+
+        Accept the following POST parameters: username, password
+
+        Return the REST Framework Token Object''s key.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+      tags:
+      - authentication
+  /authentication/password/change/:
+    post:
+      operationId: createPasswordChange
+      description: 'Calls Django Auth SetPasswordForm save method.
+
+
+        Accepts the following POST parameters: new_password1, new_password2
+
+        Returns the success/fail message.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordChange'
+          description: ''
+      tags:
+      - authentication
+  /registration/:
+    post:
+      operationId: createRegister
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Register'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Register'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+      tags:
+      - registration
+  /registration/verify-email/:
+    post:
+      operationId: createVerifyEmail
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyEmail'
+          description: ''
+      tags:
+      - registration
+  /registration/resend-email/:
+    post:
+      operationId: createEmailAddress
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResendEmailVerification'
+          description: ''
+      tags:
+      - registration
+  /accounts/user/{id}/:
+    put:
+      operationId: updateUser
+      description: Allows the admin to view user profile or deactivate user's account.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this user.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GetUser'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUser'
+          description: ''
+      tags:
+      - accounts
+    patch:
+      operationId: partialUpdateUser
+      description: Allows the admin to view user profile or deactivate user's account.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this user.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GetUser'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUser'
+          description: ''
+      tags:
+      - accounts
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 40
+        last_name:
+          type: string
+          maxLength: 40
+        email:
+          type: string
+          format: email
+          maxLength: 300
+        phone_number:
+          type: string
+          pattern: ^\+?234?\d{9,17}$
+          maxLength: 17
+        date_of_birth:
+          type: string
+          format: date
+        password:
+          type: string
+          writeOnly: true
+        image:
+          type: string
+          format: binary
+        nationality:
+          enum:
+          - AF
+          - AX
+          - AL
+          - DZ
+          - AS
+          - AD
+          - AO
+          - AI
+          - AQ
+          - AG
+          - AR
+          - AM
+          - AW
+          - AU
+          - AT
+          - AZ
+          - BS
+          - BH
+          - BD
+          - BB
+          - BY
+          - BE
+          - BZ
+          - BJ
+          - BM
+          - BT
+          - BO
+          - BQ
+          - BA
+          - BW
+          - BV
+          - BR
+          - IO
+          - BN
+          - BG
+          - BF
+          - BI
+          - CV
+          - KH
+          - CM
+          - CA
+          - KY
+          - CF
+          - TD
+          - CL
+          - CN
+          - CX
+          - CC
+          - CO
+          - KM
+          - CG
+          - CD
+          - CK
+          - CR
+          - CI
+          - HR
+          - CU
+          - CW
+          - CY
+          - CZ
+          - DK
+          - DJ
+          - DM
+          - DO
+          - EC
+          - EG
+          - SV
+          - GQ
+          - ER
+          - EE
+          - SZ
+          - ET
+          - FK
+          - FO
+          - FJ
+          - FI
+          - FR
+          - GF
+          - PF
+          - TF
+          - GA
+          - GM
+          - GE
+          - DE
+          - GH
+          - GI
+          - GR
+          - GL
+          - GD
+          - GP
+          - GU
+          - GT
+          - GG
+          - GN
+          - GW
+          - GY
+          - HT
+          - HM
+          - VA
+          - HN
+          - HK
+          - HU
+          - IS
+          - IN
+          - ID
+          - IR
+          - IQ
+          - IE
+          - IM
+          - IL
+          - IT
+          - JM
+          - JP
+          - JE
+          - JO
+          - KZ
+          - KE
+          - KI
+          - KW
+          - KG
+          - LA
+          - LV
+          - LB
+          - LS
+          - LR
+          - LY
+          - LI
+          - LT
+          - LU
+          - MO
+          - MG
+          - MW
+          - MY
+          - MV
+          - ML
+          - MT
+          - MH
+          - MQ
+          - MR
+          - MU
+          - YT
+          - MX
+          - FM
+          - MD
+          - MC
+          - MN
+          - ME
+          - MS
+          - MA
+          - MZ
+          - MM
+          - NA
+          - NR
+          - NP
+          - NL
+          - NC
+          - NZ
+          - NI
+          - NE
+          - NG
+          - NU
+          - NF
+          - KP
+          - MK
+          - MP
+          - 'NO'
+          - OM
+          - PK
+          - PW
+          - PS
+          - PA
+          - PG
+          - PY
+          - PE
+          - PH
+          - PN
+          - PL
+          - PT
+          - PR
+          - QA
+          - RE
+          - RO
+          - RU
+          - RW
+          - BL
+          - SH
+          - KN
+          - LC
+          - MF
+          - PM
+          - VC
+          - WS
+          - SM
+          - ST
+          - SA
+          - SN
+          - RS
+          - SC
+          - SL
+          - SG
+          - SX
+          - SK
+          - SI
+          - SB
+          - SO
+          - ZA
+          - GS
+          - KR
+          - SS
+          - ES
+          - LK
+          - SD
+          - SR
+          - SJ
+          - SE
+          - CH
+          - SY
+          - TW
+          - TJ
+          - TZ
+          - TH
+          - TL
+          - TG
+          - TK
+          - TO
+          - TT
+          - TN
+          - TR
+          - TM
+          - TC
+          - TV
+          - UG
+          - UA
+          - AE
+          - GB
+          - UM
+          - US
+          - UY
+          - UZ
+          - VU
+          - VE
+          - VN
+          - VG
+          - VI
+          - WF
+          - EH
+          - YE
+          - ZM
+          - ZW
+          type: string
+        address:
+          type: string
+          maxLength: 500
+        account_type:
+          enum:
+          - Select
+          - Savings
+          - Current
+          type: string
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        national_identification_number:
+          type: integer
+          nullable: true
+        bank_verification_number:
+          type: integer
+          nullable: true
+        mothers_maiden_name:
+          type: string
+          maxLength: 40
+      required:
+      - first_name
+      - last_name
+      - email
+      - date_of_birth
+      - password
+      - image
+      - nationality
+      - address
+      - mothers_maiden_name
+    GetUser:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 300
+        bank_verification_number:
+          type: integer
+          nullable: true
+      required:
+      - email
+    Account:
+      type: object
+      properties:
+        user:
+          type: string
+        bank_name:
+          enum:
+          - select
+          - zenith Bank
+          - gt bank
+          - eco Bank
+          - uba Bank
+          - polaris bank
+          - standard chartered bank
+          - keystone bank
+          - access bank
+          - sterling bank
+          type: string
+        token:
+          enum:
+          - select
+          - nft
+          - cryptocurrency
+          - all
+          - cash
+          type: string
+        cash_avaliable:
+          type: number
+          nullable: true
+        token_avaliable:
+          type: number
+          nullable: true
+      required:
+      - user
+    Transfer:
+      type: object
+      properties:
+        select_token:
+          enum:
+          - cryptocurrency
+          - nft
+          - none
+          type: string
+          nullable: true
+        cash_amount:
+          type: number
+          nullable: true
+        token_amount:
+          type: number
+          nullable: true
+        account_no_transferred:
+          type: integer
+          nullable: true
+        reference:
+          type: string
+          nullable: true
+    Withdraw:
+      type: object
+      properties:
+        select_token:
+          enum:
+          - cryptocurrency
+          - nft
+          - none
+          type: string
+          nullable: true
+        cash_amount:
+          type: number
+          nullable: true
+        token_amount:
+          type: number
+          nullable: true
+    Deposit:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        amount:
+          type: number
+        account:
+          type: string
+      required:
+      - amount
+      - account
+    Check_balance:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        account:
+          type: string
+      required:
+      - account
+    UserDetails:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+\z
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+      required:
+      - username
+    Admin:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 40
+        last_name:
+          type: string
+          maxLength: 40
+        email:
+          type: string
+          format: email
+          maxLength: 300
+        phone_number:
+          type: string
+          pattern: ^\+?234?\d{9,17}$
+          maxLength: 17
+        date_of_birth:
+          type: string
+          format: date
+        password:
+          type: string
+          writeOnly: true
+        image:
+          type: string
+          format: binary
+        nationality:
+          enum:
+          - AF
+          - AX
+          - AL
+          - DZ
+          - AS
+          - AD
+          - AO
+          - AI
+          - AQ
+          - AG
+          - AR
+          - AM
+          - AW
+          - AU
+          - AT
+          - AZ
+          - BS
+          - BH
+          - BD
+          - BB
+          - BY
+          - BE
+          - BZ
+          - BJ
+          - BM
+          - BT
+          - BO
+          - BQ
+          - BA
+          - BW
+          - BV
+          - BR
+          - IO
+          - BN
+          - BG
+          - BF
+          - BI
+          - CV
+          - KH
+          - CM
+          - CA
+          - KY
+          - CF
+          - TD
+          - CL
+          - CN
+          - CX
+          - CC
+          - CO
+          - KM
+          - CG
+          - CD
+          - CK
+          - CR
+          - CI
+          - HR
+          - CU
+          - CW
+          - CY
+          - CZ
+          - DK
+          - DJ
+          - DM
+          - DO
+          - EC
+          - EG
+          - SV
+          - GQ
+          - ER
+          - EE
+          - SZ
+          - ET
+          - FK
+          - FO
+          - FJ
+          - FI
+          - FR
+          - GF
+          - PF
+          - TF
+          - GA
+          - GM
+          - GE
+          - DE
+          - GH
+          - GI
+          - GR
+          - GL
+          - GD
+          - GP
+          - GU
+          - GT
+          - GG
+          - GN
+          - GW
+          - GY
+          - HT
+          - HM
+          - VA
+          - HN
+          - HK
+          - HU
+          - IS
+          - IN
+          - ID
+          - IR
+          - IQ
+          - IE
+          - IM
+          - IL
+          - IT
+          - JM
+          - JP
+          - JE
+          - JO
+          - KZ
+          - KE
+          - KI
+          - KW
+          - KG
+          - LA
+          - LV
+          - LB
+          - LS
+          - LR
+          - LY
+          - LI
+          - LT
+          - LU
+          - MO
+          - MG
+          - MW
+          - MY
+          - MV
+          - ML
+          - MT
+          - MH
+          - MQ
+          - MR
+          - MU
+          - YT
+          - MX
+          - FM
+          - MD
+          - MC
+          - MN
+          - ME
+          - MS
+          - MA
+          - MZ
+          - MM
+          - NA
+          - NR
+          - NP
+          - NL
+          - NC
+          - NZ
+          - NI
+          - NE
+          - NG
+          - NU
+          - NF
+          - KP
+          - MK
+          - MP
+          - 'NO'
+          - OM
+          - PK
+          - PW
+          - PS
+          - PA
+          - PG
+          - PY
+          - PE
+          - PH
+          - PN
+          - PL
+          - PT
+          - PR
+          - QA
+          - RE
+          - RO
+          - RU
+          - RW
+          - BL
+          - SH
+          - KN
+          - LC
+          - MF
+          - PM
+          - VC
+          - WS
+          - SM
+          - ST
+          - SA
+          - SN
+          - RS
+          - SC
+          - SL
+          - SG
+          - SX
+          - SK
+          - SI
+          - SB
+          - SO
+          - ZA
+          - GS
+          - KR
+          - SS
+          - ES
+          - LK
+          - SD
+          - SR
+          - SJ
+          - SE
+          - CH
+          - SY
+          - TW
+          - TJ
+          - TZ
+          - TH
+          - TL
+          - TG
+          - TK
+          - TO
+          - TT
+          - TN
+          - TR
+          - TM
+          - TC
+          - TV
+          - UG
+          - UA
+          - AE
+          - GB
+          - UM
+          - US
+          - UY
+          - UZ
+          - VU
+          - VE
+          - VN
+          - VG
+          - VI
+          - WF
+          - EH
+          - YE
+          - ZM
+          - ZW
+          type: string
+        address:
+          type: string
+          maxLength: 500
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        national_identification_number:
+          type: integer
+          nullable: true
+      required:
+      - first_name
+      - last_name
+      - email
+      - date_of_birth
+      - password
+      - image
+      - nationality
+      - address
+    TokenRefresh:
+      type: object
+      properties:
+        refresh:
+          type: string
+        access:
+          type: string
+          readOnly: true
+      required:
+      - refresh
+    ResetPasswordOTP:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    ConfirmResetOtp:
+      type: object
+      properties:
+        otp:
+          type: string
+          maxLength: 6
+        email:
+          type: string
+          format: email
+      required:
+      - otp
+      - email
+    OTPVerify:
+      type: object
+      properties:
+        otp:
+          type: string
+          maxLength: 6
+      required:
+      - otp
+    NewOtp:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    PasswordReset:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    PasswordResetConfirm:
+      type: object
+      properties:
+        new_password1:
+          type: string
+          maxLength: 128
+        new_password2:
+          type: string
+          maxLength: 128
+        uid:
+          type: string
+        token:
+          type: string
+      required:
+      - new_password1
+      - new_password2
+      - uid
+      - token
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+      required:
+      - password
+    PasswordChange:
+      type: object
+      properties:
+        new_password1:
+          type: string
+          maxLength: 128
+        new_password2:
+          type: string
+          maxLength: 128
+      required:
+      - new_password1
+      - new_password2
+    Register:
+      type: object
+      properties:
+        username:
+          type: string
+          maxLength: 150
+          minLength: 1
+        email:
+          type: string
+          format: email
+        password1:
+          type: string
+          writeOnly: true
+        password2:
+          type: string
+          writeOnly: true
+      required:
+      - username
+      - password1
+      - password2
+    VerifyEmail:
+      type: object
+      properties:
+        key:
+          type: string
+      required:
+      - key
+    ResendEmailVerification:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
